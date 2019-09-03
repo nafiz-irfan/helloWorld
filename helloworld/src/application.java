@@ -1,7 +1,22 @@
 public class application  {
     public static void main(String[] args) {
-        for(int i=0; i < 5; i++) {
-            System.out.printf("The value of i is: " + i + "\n");
+        // Some useful conditions:
+        System.out.println(5 == 5);
+        System.out.println(10 != 11);
+        System.out.println(3 < 6);
+        System.out.println(10 > 100);
+
+        // Using loops with "break":
+        int loop = 0;
+
+        while(true){
+            System.out.println("Looping " + loop);
+
+            if (loop == 3) break;
+
+            loop++;
+
+            System.out.println("Running");
         }
     }
 }
