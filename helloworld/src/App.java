@@ -4,14 +4,21 @@ public class App {
         Person person1 = new Person();
         person1.name = "Latipah";
         person1.age = 25;
-        person1.speak();
-        person1.sayHello();
+//        person1.speak();
+
+        int years = person1.getYearstoRetire();
+        System.out.println("Years till retirement " + years);
+
+        int age = person1.getAge();
+        String name = person1.getName();
+
+        System.out.println("Name is " + name);
+        System.out.println("Age is " + age);
 
         Person person2 = new Person();
         person2.name = "John";
         person2.age = 27;
-        person2.speak();
-        person2.sayHello();
+//        person2.speak();
 
     }
 }
@@ -24,8 +31,17 @@ class Person{
         System.out.println("My name is " + name + " and I am " + age + " years old.");
     }
 
-    void sayHello(){
-        System.out.println("Hello there!");
+    int getYearstoRetire(){
+        int yearsLeft = 65 - age;
+        return yearsLeft;
+    }
+
+    int getAge(){
+        return age;
+    }
+
+    String getName(){
+        return name;
     }
 }
 
