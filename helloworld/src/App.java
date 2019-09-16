@@ -4,17 +4,28 @@ public class App {
         Person person1 = new Person();
         person1.name = "Latipah";
         person1.age = 25;
+        person1.speak();
+        person1.sayHello();
 
         Person person2 = new Person();
         person2.name = "John";
         person2.age = 27;
+        person2.speak();
+        person2.sayHello();
 
-        System.out.println(person1.name + " : " + person1.age);
     }
 }
 
 class Person{
     String name;
     int age;
+
+    void speak(){
+        System.out.println("My name is " + name + " and I am " + age + " years old.");
+    }
+
+    void sayHello(){
+        System.out.println("Hello there!");
+    }
 }
 
