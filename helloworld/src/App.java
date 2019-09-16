@@ -1,47 +1,39 @@
 public class App {
     public static void main(String [] args){
 
-        Person person1 = new Person();
-        person1.name = "Latipah";
-        person1.age = 25;
-//        person1.speak();
+        Frog frog1 = new Frog();
+//        frog1.setName("Prince");
+//        frog1.setAge(1);
+        frog1.setInfo("Prince", 1);
 
-        int years = person1.getYearstoRetire();
-        System.out.println("Years till retirement " + years);
-
-        int age = person1.getAge();
-        String name = person1.getName();
-
-        System.out.println("Name is " + name);
-        System.out.println("Age is " + age);
-
-        Person person2 = new Person();
-        person2.name = "John";
-        person2.age = 27;
-//        person2.speak();
-
+        System.out.println(frog1.getName());
+        System.out.println(frog1.getAge());
     }
 }
 
-class Person{
-    String name;
-    int age;
+class Frog{
+    private String name;
+    private int age;
 
-    void speak(){
-        System.out.println("My name is " + name + " and I am " + age + " years old.");
+    public void setName(String name){
+        this.name = name;
     }
 
-    int getYearstoRetire(){
-        int yearsLeft = 65 - age;
-        return yearsLeft;
+    public void setAge(int age){
+        this.age = age;
     }
 
-    int getAge(){
+    public String getName(){
+        return name;
+    }
+
+    public int getAge(){
         return age;
     }
 
-    String getName(){
-        return name;
+    public void setInfo(String name, int age){
+        setName(name);
+        setAge(age);
     }
 }
 
