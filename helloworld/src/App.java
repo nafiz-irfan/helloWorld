@@ -3,31 +3,24 @@
 public class App {
     public static void main(String [] args){
 
-        int value = 7;
+        String[] words = new String[3];
 
-        int[] values = new int[3];
+        words[0] = "Hello";
+        words[1] = "to";
+        words[2] = "you";
 
-        System.out.println("First : " + values[0]);
+        String[] fruits = {"apple", "banana", "pear", "kiwi"};
 
-        values[0] = 10;
-        values[1] = 20;
-        values[2] = 30;
-
-        System.out.println(values[0]);
-        System.out.println(values[1]);
-        System.out.println(values[2]);
-
-        System.out.println("Values loop:");
-        for(int i= 0; i < values.length; i++){
-            System.out.println(values[i]);
+        for(String fruit: fruits){
+            System.out.println(fruit);
         }
 
-        int[] numbers = {5, 6, 7};
+        int value = 0;
+        String text = null;
+        String[] texts = new String[2];
 
-        System.out.println("Numbers loop:");
-        for(int i=0; i < numbers.length; i++){
-            System.out.println(numbers[i]);
-        }
+        System.out.println(texts[0]);
+
     }
 }
 
