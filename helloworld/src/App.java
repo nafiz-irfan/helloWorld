@@ -1,27 +1,33 @@
-import java.util.Scanner;
+
 
 public class App {
     public static void main(String [] args){
-        Scanner scanner = new Scanner(System.in);
 
-        /*
-        System.out.println("Enter a number: ");
-        int value = scanner.nextInt();
+        int value = 7;
 
-        while(value != 5) {
-            System.out.println("Enter a number: ");
-            value = scanner.nextInt();
+        int[] values = new int[3];
+
+        System.out.println("First : " + values[0]);
+
+        values[0] = 10;
+        values[1] = 20;
+        values[2] = 30;
+
+        System.out.println(values[0]);
+        System.out.println(values[1]);
+        System.out.println(values[2]);
+
+        System.out.println("Values loop:");
+        for(int i= 0; i < values.length; i++){
+            System.out.println(values[i]);
         }
-        */
 
-        int value = 0;
-        do {
-            System.out.println("Enter a number: ");
-            value = scanner.nextInt();
+        int[] numbers = {5, 6, 7};
+
+        System.out.println("Numbers loop:");
+        for(int i=0; i < numbers.length; i++){
+            System.out.println(numbers[i]);
         }
-        while(value != 5);
-
-        System.out.println("Got 5!");
     }
 }
 
