@@ -1,22 +1,25 @@
+import java.util.Scanner;
+
 public class application  {
     public static void main(String[] args) {
-        // Some useful conditions:
-        System.out.println(5 == 5);
-        System.out.println(10 != 11);
-        System.out.println(3 < 6);
-        System.out.println(10 > 100);
 
-        // Using loops with "break":
-        int loop = 0;
+        Scanner input = new Scanner (System.in);
 
-        while(true){
-            System.out.println("Looping " + loop);
+        System.out.println("Please enter a command: ");
+        String text = input.nextLine();
 
-            if (loop == 3) break;
 
-            loop++;
+        switch (text){
+            case ("start"):
+                System.out.println("Machine Started!");
+                break;
 
-            System.out.println("Running");
+            case "stop":
+                System.out.println("Machine Stopped.");
+                break;
+
+            default:
+                System.out.println("Please type start or stop command.");
         }
     }
 }
