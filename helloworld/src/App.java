@@ -1,39 +1,30 @@
-public class App {
-    public static void main(String [] args){
+class Machine{
+    private String name;
+    private int code;
 
-        Frog frog1 = new Frog();
-//        frog1.setName("Prince");
-//        frog1.setAge(1);
-        frog1.setInfo("Prince", 1);
+    public Machine(){
+//        this("Arnie", 0);
+        System.out.println("Constructor running!");
+    }
 
-        System.out.println(frog1.getName());
-        System.out.println(frog1.getAge());
+    public Machine(String name){
+        this(name, 0);
+        System.out.println("Second constructor running!");
+//        this.name = name;
+    }
+
+    public Machine(String name, int code){
+        this();
+        System.out.println("Third constructor running!");
+//        this.name();
+//        this.code();
     }
 }
-
-class Frog{
-    private String name;
-    private int age;
-
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public void setAge(int age){
-        this.age = age;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public int getAge(){
-        return age;
-    }
-
-    public void setInfo(String name, int age){
-        setName(name);
-        setAge(age);
+public class App {
+    public static void main(String [] args){
+        Machine machine1 = new Machine();
+        Machine machine2 = new Machine("Bertie");
+        Machine machine3 = new Machine("Ahmad", 10);
     }
 }
 
