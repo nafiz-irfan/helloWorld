@@ -1,46 +1,41 @@
-class Thing{
-    public final static int LUCKY_NUMBER = 7;
-
-    public String name;
-    public static String description;
-
-    public static int count = 0;
-
-    public int id;
-
-    public Thing(){
-        id = count;
-        count++;
-    }
-
-    public void showName(){
-        System.out.println("Object id: " + id + ", " + description + ": " + name);
-    }
-
-    public static void showInfo(){
-        System.out.println(description);
-        //Won't work: System.out.println(name);
-    }
-}
 public class App {
     public static void main(String [] args){
-       Thing.description = "I am a thing";
 
-       Thing.showInfo();
+        //Inefficient example
+        String info = "";
 
-       Thing thing1 = new Thing();
-       Thing thing2 = new Thing();
+        info += "My name is Bob.";
+        info += " ";
+        info += "I am a builder.";
 
-       System.out.println("After creating objects, count is: " + Thing.count);
+//        System.out.println(info);
 
-       thing1.name = "Bob";
-       thing2.name = "Sue";
+        //More efficient example
+        StringBuilder sb = new StringBuilder("");
 
-       thing1.showName();
-       thing2.showName();
+        sb.append("My name is Sue.");
+        sb.append(" ");
+        sb.append("I am a dentist.");
 
-       System.out.println(Math.PI);
-       System.out.println(Thing.LUCKY_NUMBER);
+//        System.out.println(sb.toString());
+
+        // The same as above, but nicer ....
+        StringBuilder s = new StringBuilder();
+
+        s.append("My name is Roger.").append(" ").append("I am an athlete.");
+
+//        System.out.println(s.toString());
+
+        ///// Formatting //////////////////////////////////
+
+        //Outputting newlines and tabs
+//        System.out.println("Here is some text.\tThat was a tab.\nThat was a newline.");
+//        System.out.println("More text.");
+
+        // Formatting integers
+        // %-10d means: output an integer in a space ten characters wide,
+        // padding with space and left-aligning (%10d would right-align)
+        System.out.printf("Total cost %-10d; quantity is %10d\n", 5 , 120);
     }
 }
 
