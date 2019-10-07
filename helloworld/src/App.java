@@ -25,6 +25,7 @@ public class App {
 
         // Won't work; App and Plant in different packages, height has package-level visibility.
         //System.out.println(plant.height);
+
     }
 }
 
