@@ -1,33 +1,38 @@
+class Plant{
+
+    // Usually only static final members are public
+    public static final int ID = 7;
+
+    // Instance variables should be declared private or at least protected
+    private String name;
+
+    // Only methods intended for use outside the class
+    // should be public. These methods should be documented
+    // carefully if you distribute your code
+    public String getData(){
+        String data = "Some stuff" + calculateGrowthForecast();
+        return data;
+    }
+
+    // Methods only used the the class itself should
+    // be private or protected.
+    private int calculateGrowthForecast(){
+        return 9;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setName(){
+        this.name = name;
+    }
+}
+
 public class App {
 
     public static void main(String [] args){
 
-        Plant plant1 = new Plant();
-
-        //Tree is a kind of plant(it extends Plant)
-        Tree tree = new Tree();
-
-        plant1.grow();
-        //Polymorphism guarantees that we can use a child class wherever a parent class is expected
-        Plant plant2 = tree;
-        //Plant plant2 = new Plant();
-
-        //plant2 reference a Tree, so the Tree grow() method is called
-        plant2.grow();
-
-        //The type of the reference decided what methods you can actually call
-        //We need a Tree-type reference to call tree-specific methods
-        tree.shedLeaves();
-
-        // ... so this won't work.
-        //plant2.shedLeaves();
-
-        // Another example of polymorphism.
-        doGrow(tree);
-    }
-
-    private static void doGrow(Plant plant) {
-        plant.grow();
     }
 }
 
