@@ -1,38 +1,34 @@
-class Plant{
-
-    // Usually only static final members are public
-    public static final int ID = 7;
-
-    // Instance variables should be declared private or at least protected
-    private String name;
-
-    // Only methods intended for use outside the class
-    // should be public. These methods should be documented
-    // carefully if you distribute your code
-    public String getData(){
-        String data = "Some stuff" + calculateGrowthForecast();
-        return data;
-    }
-
-    // Methods only used the the class itself should
-    // be private or protected.
-    private int calculateGrowthForecast(){
-        return 9;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public void setName(){
-        this.name = name;
-    }
-}
-
 public class App {
 
+    /**
+     * @param args
+     */
     public static void main(String [] args){
 
+        byte byteValue = 20;
+        short shortValue = 55;
+        int intValue = 888;
+        long longValue = 23355;
+
+        float floatValue = 8834.8f;
+        float floatValue2 = (float)99.3;
+        double doubleValue = 32.4;
+
+        System.out.println(Byte.MAX_VALUE);
+
+        intValue = (int)longValue;
+        System.out.println(intValue);
+
+        doubleValue = intValue;
+        System.out.println(doubleValue);
+
+        intValue = (int)floatValue;
+        System.out.println(intValue);
+
+        // The following won't work as we expect it to!!
+        // 128 is too big for a byte.
+        byteValue = (byte)128;
+        System.out.println(byteValue);
     }
 }
 
