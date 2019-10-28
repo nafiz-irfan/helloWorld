@@ -1,31 +1,33 @@
-import world.Plant;
-
-/*
- * private --- only within same class
- * public --- from anywhere
- * protected -- same class, subclass, and same package
- * no modifier -- same package only
- */
-
 public class App {
-    /**
-     * @param args
-     */
+
     public static void main(String [] args){
-        Plant plant = new Plant();
 
-        System.out.println(plant.name);
-        System.out.println(plant.ID);
-        // Won't work --- type is private
-        //System.out.println(plant.type);
+        Plant plant1 = new Plant();
 
-        // size is protected; App is not in the same package as Plant.
-        // Won't work
-        // System.out.println(plant.size);
+        //Tree is a kind of plant(it extends Plant)
+        Tree tree = new Tree();
 
-        // Won't work; App and Plant in different packages, height has package-level visibility.
-        //System.out.println(plant.height);
+        plant1.grow();
+        //Polymorphism guarantees that we can use a child class wherever a parent class is expected
+        Plant plant2 = tree;
+        //Plant plant2 = new Plant();
 
+        //plant2 reference a Tree, so the Tree grow() method is called
+        plant2.grow();
+
+        //The type of the reference decided what methods you can actually call
+        //We need a Tree-type reference to call tree-specific methods
+        tree.shedLeaves();
+
+        // ... so this won't work.
+        //plant2.shedLeaves();
+
+        // Another example of polymorphism.
+        doGrow(tree);
+    }
+
+    private static void doGrow(Plant plant) {
+        plant.grow();
     }
 }
 
