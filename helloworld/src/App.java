@@ -1,25 +1,49 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
 
 public class App {
     public static void main(String [] args) {
+        Test test = new Test();
 
+        //Multiple catch blocks
+//        try {
+//            test.run();
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }catch (ParseException e){
+//            System.out.println("Couldn't parse command file.");
+//        }
 
+        // Try multi-catch (Java 7+ only)
+//        try {
+//            test.run();
+//        } catch (IOException | ParseException e) {
+//            //TODO auto-generated catch block
+//            e.printStackTrace();
+//        }
 
+        // Using polymorphism to catch the parent of all exceptions
+//        try {
+//            test.run();
+//        }catch (Exception e){
+//            //TODO auto-generated catch block
+//            e.printStackTrace();
+//        }
+
+        // Important to catch exceptions in the right order!
+        // IOException cannot come first, because it's the parent
+        // of FileNotFoundException, so would catch both exceptions
+        // in this case.
         try {
-            openFile();
-            System.out.println("File found");
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            test.input();
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
         }
-        System.out.println("Finished");
-    }
-
-    public static void openFile() throws FileNotFoundException {
-
-        File file = new File("test.txt");
-        FileReader fr = new FileReader(file);
     }
 }
 
