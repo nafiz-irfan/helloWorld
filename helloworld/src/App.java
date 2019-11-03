@@ -1,34 +1,44 @@
-public class App {
+class Machine {
+    public void start(){
+        System.out.println("Machine Started");
+    }
+}
 
-    /**
-     * @param args
-     */
+class Camera extends Machine{
+    public void start() {
+        System.out.println("Camera started.");
+    }
+
+    public void snap(){
+        System.out.println("Photo taken.");
+    }
+}
+
+public class App {
     public static void main(String [] args){
 
-        byte byteValue = 20;
-        short shortValue = 55;
-        int intValue = 888;
-        long longValue = 23355;
+        Machine machine1 = new Machine();
+        Camera camera1 = new Camera();
+        machine1.start();
+        camera1.start();
+        camera1.snap();
 
-        float floatValue = 8834.8f;
-        float floatValue2 = (float)99.3;
-        double doubleValue = 32.4;
+        //Upcasting
+        Machine machine2 = new Machine();
+        machine2.start();
+        // error: machine2.snap();
 
-        System.out.println(Byte.MAX_VALUE);
+        //Downcasting
+        Machine machine3 = new Camera();
+        Camera camera2 = (Camera)machine3;
+        camera2.start();
+        camera2.snap();
 
-        intValue = (int)longValue;
-        System.out.println(intValue);
-
-        doubleValue = intValue;
-        System.out.println(doubleValue);
-
-        intValue = (int)floatValue;
-        System.out.println(intValue);
-
-        // The following won't work as we expect it to!!
-        // 128 is too big for a byte.
-        byteValue = (byte)128;
-        System.out.println(byteValue);
+        // Doesn't work --- runtime error.
+        Machine machine4 = new Machine();
+//        Camera camera3 = (Camera)machine4;
+//        camera3.start();
+//        camera3.snap();
     }
 }
 
