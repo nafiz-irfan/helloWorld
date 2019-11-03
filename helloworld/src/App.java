@@ -1,44 +1,44 @@
-class Machine {
-    public void start(){
-        System.out.println("Machine Started");
-    }
-}
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class Camera extends Machine{
-    public void start() {
-        System.out.println("Camera started.");
-    }
-
-    public void snap(){
-        System.out.println("Photo taken.");
-    }
-}
+class Animal { }
 
 public class App {
     public static void main(String [] args){
+        /////////////////// Before Java 5 ////////////////////////
+        ArrayList list = new ArrayList();
 
-        Machine machine1 = new Machine();
-        Camera camera1 = new Camera();
-        machine1.start();
-        camera1.start();
-        camera1.snap();
+        list.add("apple");
+        list.add("banana");
+        list.add("orange");
 
-        //Upcasting
-        Machine machine2 = new Machine();
-        machine2.start();
-        // error: machine2.snap();
+        String fruit = (String)list.get(1);
 
-        //Downcasting
-        Machine machine3 = new Camera();
-        Camera camera2 = (Camera)machine3;
-        camera2.start();
-        camera2.snap();
+        System.out.println(fruit);
 
-        // Doesn't work --- runtime error.
-        Machine machine4 = new Machine();
-//        Camera camera3 = (Camera)machine4;
-//        camera3.start();
-//        camera3.snap();
-    }
+        /////////////// Modern style //////////////////////////////
+
+        ArrayList<String> strings = new ArrayList<String>();
+
+        strings.add("cat");
+        strings.add("dog");
+        strings.add("duck");
+
+        String animal = strings.get(1);
+
+        System.out.println(animal);
+
+        ///////////// There can be more than one type argument ////////////////////
+
+        HashMap<Integer, String>map = new HashMap<Integer, String>();
+
+        map.put(1,"test");
+        System.out.println(map);
+
+        //////////// Java 7 style /////////////////////////////////
+        ArrayList<Animal> someList = new ArrayList<>();
+        someList.add(new Animal());
+        System.out.println(someList);
+}
 }
 
