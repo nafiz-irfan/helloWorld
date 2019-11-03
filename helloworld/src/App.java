@@ -3,11 +3,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class App {
-    public static void main(String [] args) throws FileNotFoundException {
+    public static void main(String [] args) {
 
         File file = new File("test.txt");
 
-        FileReader fr = new FileReader(file);
+        try {
+            FileReader fr = new FileReader(file);
+            System.out.println("File " + file.toString() + " found");
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + file.toString());
+        }
+        System.out.println("Finished");
     }
 }
 
