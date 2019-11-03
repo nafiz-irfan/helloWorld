@@ -5,15 +5,21 @@ import java.io.FileReader;
 public class App {
     public static void main(String [] args) {
 
-        File file = new File("test.txt");
+
 
         try {
-            FileReader fr = new FileReader(file);
-            System.out.println("File " + file.toString() + " found");
+            openFile();
+            System.out.println("File found");
         } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + file.toString());
+            System.out.println("File not found");
         }
         System.out.println("Finished");
+    }
+
+    public static void openFile() throws FileNotFoundException {
+
+        File file = new File("test.txt");
+        FileReader fr = new FileReader(file);
     }
 }
 
