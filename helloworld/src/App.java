@@ -1,21 +1,13 @@
 public class App {
     public static void main(String[] args) {
+        Camera camera = new Camera();
+        camera.setId(1);
 
-        String text = null;
+        Car car = new Car();
+        car.setId(2);
 
-//        System.out.println(text.length());
-
-//        int val = 7/0;
-
-//        System.out.println(val);
-
-        String[] texts = {"one", "two", "three"};
-        try {
-            System.out.println(texts[3]);
-        }catch (ArrayIndexOutOfBoundsException e){
-//            System.out.println(e.toString());
-            e.printStackTrace();
-        }
+        car.run();
+        camera.run();
     }
 }
 
