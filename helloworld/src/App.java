@@ -1,36 +1,19 @@
-import java.io.*;
+class Temp implements AutoCloseable{
+
+    @Override
+    public void close() throws Exception {
+        System.out.println("Closing!");
+        throw new Exception("oh no!");
+    }
+}
 
 public class App {
     public static void main(String[] args) {
-        File file = new File("E:/IdeaProjects/helloWorld/helloworld/src/test.txt");
 
-        BufferedReader br = null;
+        try (Temp temp = new Temp()){
 
-        try {
-            FileReader fileReader = new FileReader(file);
-            br = new BufferedReader(fileReader);
-
-            String line;
-
-            while ((line = br.readLine()) != null){
-                System.out.println(line);
-            }
-
-        }catch (FileNotFoundException e){
-            System.out.println("File not found: " + file.toString());
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            System.out.println("Unable to read file: " + file.toString());
-            e.printStackTrace();
-        }finally {
-            try {
-                if (br != null) {
-                    br.close();
-                }
-            }catch (IOException e) {
-                System.out.println("Unable to close file: " + file.toString());
-                e.printStackTrace();
-            }catch (NullPointerException ex){}
         }
     }
 }
