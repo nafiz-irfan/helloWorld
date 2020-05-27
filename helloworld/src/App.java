@@ -1,47 +1,19 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.ParseException;
-
 public class App {
-    public static void main(String [] args) {
-        Test test = new Test();
+    public static void main(String[] args) {
 
-        //Multiple catch blocks
-//        try {
-//            test.run();
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        }catch (ParseException e){
-//            System.out.println("Couldn't parse command file.");
-//        }
+        String text = null;
 
-        // Try multi-catch (Java 7+ only)
-//        try {
-//            test.run();
-//        } catch (IOException | ParseException e) {
-//            //TODO auto-generated catch block
-//            e.printStackTrace();
-//        }
+//        System.out.println(text.length());
 
-        // Using polymorphism to catch the parent of all exceptions
-//        try {
-//            test.run();
-//        }catch (Exception e){
-//            //TODO auto-generated catch block
-//            e.printStackTrace();
-//        }
+//        int val = 7/0;
 
-        // Important to catch exceptions in the right order!
-        // IOException cannot come first, because it's the parent
-        // of FileNotFoundException, so would catch both exceptions
-        // in this case.
+//        System.out.println(val);
+
+        String[] texts = {"one", "two", "three"};
         try {
-            test.input();
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }catch (IOException e){
+            System.out.println(texts[3]);
+        }catch (ArrayIndexOutOfBoundsException e){
+//            System.out.println(e.toString());
             e.printStackTrace();
         }
     }
