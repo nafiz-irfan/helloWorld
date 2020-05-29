@@ -1,21 +1,31 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class WriteObjects {
     public static void main(String[] args) {
         System.out.println("Writing objects...");
 
-        Person mike = new Person(1, "Mike");
-        Person jon = new Person(2, "Jon");
+        Person[] people = {new Person(1, "Sue"), new Person(2, "Jon"), new Person(3, "Mark")};
 
-        System.out.println(mike);
-        System.out.println(jon);
+        ArrayList<Person> peopleList = new ArrayList<>(Arrays.asList(people));
 
-        try (FileOutputStream fileOutputStream = new FileOutputStream("people.bin")) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream("test.ser")) {
 
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-            objectOutputStream.writeObject(mike);
-            objectOutputStream.writeObject(jon);
+            //write entire array
+            objectOutputStream.writeObject(people);
+
+            //write arrayList
+            objectOutputStream.writeObject(peopleList);
+
+            //write objects one by one
+            objectOutputStream.writeInt(peopleList.size());
+
+            for (Person person : peopleList) {
+                objectOutputStream.writeObject(person);
+            }
 
             objectOutputStream.close();
 
