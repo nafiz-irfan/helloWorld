@@ -1,31 +1,32 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        ArrayList<Integer> numbers = new ArrayList<>();
 
-        //adding
-        numbers.add(10);
-        numbers.add(100);
-        numbers.add(1000);
+        List<Integer> arrayList = new ArrayList<>();
 
-        //retrieving
-        System.out.println(numbers.get(0));
+        List<Integer> linkedList = new LinkedList<>();
 
-        System.out.println("nIteration #1: ");
-        //indexed for loop iteration
-        for (int i = 0; i < numbers.size(); i++) {
-            System.out.println(numbers.get(i));
+        doTimings("ArrayList", arrayList);
+        doTimings("LinkedList", linkedList);
+    }
+
+    private static void doTimings(String type, List<Integer> list) {
+
+        long start = System.currentTimeMillis();
+
+        for (int i = 0; i < 1E5; i++) {
+            list.add(i);
         }
 
-        //removing items
-        numbers.remove(numbers.size() - 1);
-
-        System.out.println("nIteration #2: ");
-        for (Integer value : numbers) {
-            System.out.println(value);
+        for (int i = 0; i < 1E5; i++) {
+            list.add(0, i);
         }
 
+        long end = System.currentTimeMillis();
+
+        System.out.println("Time taken: " + (end - start) + " ms for " + type);
     }
 }
