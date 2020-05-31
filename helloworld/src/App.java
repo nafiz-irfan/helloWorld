@@ -1,29 +1,51 @@
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class App {
     public static void main(String[] args) {
 
-        Map<Integer, String> hashMap = new HashMap<>();
-        Map<Integer, String> linkedHashMap = new LinkedHashMap<>();
-        Map<Integer, String> treeMap = new TreeMap<>();
+        Set<String> set1 = new TreeSet<>();
 
-        testMap(hashMap);
-    }
-
-    public static void testMap(Map<Integer, String> map) {
-        map.put(9, "fox");
-        map.put(4, "cat");
-        map.put(8, "dog");
-        map.put(1, "giraffe");
-        map.put(0, "swan");
-
-        for (Integer key : map.keySet()) {
-            String value = map.get(key);
-
-            System.out.println(key + ": " + value);
+        if (set1.isEmpty()) {
+            System.out.println("Set is empty at start");
         }
+
+        set1.add("dog");
+        set1.add("cat");
+        set1.add("duck");
+        set1.add("cow");
+
+        if (set1.isEmpty()) System.out.println("Set is empty after adding (no!)");
+
+        // Adding duplicate items does nothing.
+        set1.add("duck");
+
+        for (String animal : set1) System.out.println(animal);
+
+        if (set1.contains("aardvark")) System.out.println("Set contains aardvark");
+
+        if (set1.contains("cat")) System.out.println("Set contains cat");
+
+        /// set2 contains some common elements with set1, and some new
+        Set<String> set2 = new TreeSet<>();
+
+        set2.add("dog");
+        set2.add("cat");
+        set2.add("giraffe");
+        set2.add("monkey");
+        set2.add("ant");
+
+        Set<String> intersection = new HashSet<>(set1);
+        intersection.retainAll(set2); //keep similarities between set 1 and set 2
+
+        System.out.println(intersection);
+
+        for (String sameAnimal : intersection) System.out.println(sameAnimal);
+
+        Set<String> difference = new HashSet<>(set2);
+
+        difference.removeAll(set1); //removes differences between set1 and set2, prints what is left of set2
+
+        for (String diffAnimal : difference) System.out.println(diffAnimal);
     }
+
 }
