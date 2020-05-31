@@ -1,32 +1,24 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class App {
     public static void main(String[] args) {
 
-        List<Integer> arrayList = new ArrayList<>();
+        HashMap<Integer, String> map = new HashMap<>();
 
-        List<Integer> linkedList = new LinkedList<>();
+        map.put(1, "One");
+        map.put(5, "Five");
+        map.put(2, "Two");
 
-        doTimings("ArrayList", arrayList);
-        doTimings("LinkedList", linkedList);
-    }
+        String text = map.get(1);
 
-    private static void doTimings(String type, List<Integer> list) {
+        System.out.println(text);
 
-        long start = System.currentTimeMillis();
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            int key = entry.getKey();
+            String value = entry.getValue();
 
-        for (int i = 0; i < 1E5; i++) {
-            list.add(i);
+            System.out.println(key + ": " + value);
         }
-
-        for (int i = 0; i < 1E5; i++) {
-            list.add(0, i);
-        }
-
-        long end = System.currentTimeMillis();
-
-        System.out.println("Time taken: " + (end - start) + " ms for " + type);
     }
 }
