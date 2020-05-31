@@ -9,18 +9,16 @@ class Person {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return id == person.id &&
-                Objects.equals(name, person.name);
+    public void setId(int id) {
+        this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
@@ -30,25 +28,104 @@ class Person {
                 ", name='" + name + '\'' +
                 '}';
     }
+
+    public String getName() {
+        return name;
+    }
+}
+
+class StringLengthComparator implements Comparator<String> {
+
+    @Override
+    public int compare(String s, String t1) {
+
+        int len1 = s.length();
+        int len2 = t1.length();
+
+        if (len1 > len2) return 1;
+
+        if (len1 < len2) return -1;
+        return 0;
+    }
+}
+
+class ReverseAlphabeticalComparator implements Comparator<String> {
+
+    @Override
+    public int compare(String s, String t1) {
+        return -s.compareTo(t1);
+    }
 }
 
 public class App {
     public static void main(String[] args) {
 
-        Person p1 = new Person(1, "Ali");
-        Person p2 = new Person(2, "Bob");
-        Person p3 = new Person(3, "Choy");
-        Person p4 = new Person(4, "Din");
+        ////////////////////// Sorting Strings ////////////////////////////////
+        List<String> animals = new ArrayList<>();
 
-        Map<Person, Integer> map = new LinkedHashMap<>();
+        System.out.println("Sorting Strings");
+        animals.add("tiger");
+        animals.add("lion");
+        animals.add("cat");
 
-        map.put(p1, 1);
-        map.put(p2, 2);
-        map.put(p3, 3);
-        map.put(p4, 4);
+        Collections.sort(animals, new StringLengthComparator());
+//        Collections.sort(animals, new ReverseAlphabeticalComparator());
 
-        System.out.println(map);
+        for (String animal : animals) System.out.println(animal);
 
+        ////////////////////// Sorting Numbers ////////////////////////////////
+        List<Integer> numbers = new ArrayList<>();
+
+        System.out.println("Sorting Numbers");
+        numbers.add(2);
+        numbers.add(44);
+        numbers.add(1);
+        numbers.add(100);
+        numbers.add(1000);
+        numbers.add(809);
+
+        Collections.sort(numbers, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer integer, Integer t1) {
+                return -t1.compareTo(integer);
+            }
+        });
+
+        for (Integer number : numbers) System.out.println(number);
+
+        ////////////////////// Sorting arbitary objects ////////////////////////////////
+        List<Person> people = new ArrayList<>();
+
+        System.out.println("Sorting Arbitary objects");
+        people.add(new Person(1, "Joe"));
+        people.add(new Person(3, "Bob"));
+        people.add(new Person(4, "Charlie"));
+        people.add(new Person(2, "Sue"));
+
+        // Sort in order of ID
+        Collections.sort(people, new Comparator<Person>() {
+            @Override
+            public int compare(Person person, Person t1) {
+
+                if (person.getId() > t1.getId()) return 1;
+
+                if (person.getId() < t1.getId()) return -1;
+                return 0;
+            }
+        });
+
+        for (Person person : people) System.out.println(person);
+
+        System.out.println("n");
+        //Sort in order of name
+        Collections.sort(people, new Comparator<Person>() {
+            @Override
+            public int compare(Person person, Person t1) {
+                return person.getName().compareTo(t1.getName());
+            }
+        });
+
+        for (Person person : people) System.out.println(person);
     }
 
 }
