@@ -1,51 +1,54 @@
 import java.util.*;
 
+class Person {
+    private int id;
+    private String name;
+
+    public Person(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return id == person.id &&
+                Objects.equals(name, person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+}
+
 public class App {
     public static void main(String[] args) {
 
-        Set<String> set1 = new TreeSet<>();
+        Person p1 = new Person(1, "Ali");
+        Person p2 = new Person(2, "Bob");
+        Person p3 = new Person(3, "Choy");
+        Person p4 = new Person(4, "Din");
 
-        if (set1.isEmpty()) {
-            System.out.println("Set is empty at start");
-        }
+        Map<Person, Integer> map = new LinkedHashMap<>();
 
-        set1.add("dog");
-        set1.add("cat");
-        set1.add("duck");
-        set1.add("cow");
+        map.put(p1, 1);
+        map.put(p2, 2);
+        map.put(p3, 3);
+        map.put(p4, 4);
 
-        if (set1.isEmpty()) System.out.println("Set is empty after adding (no!)");
+        System.out.println(map);
 
-        // Adding duplicate items does nothing.
-        set1.add("duck");
-
-        for (String animal : set1) System.out.println(animal);
-
-        if (set1.contains("aardvark")) System.out.println("Set contains aardvark");
-
-        if (set1.contains("cat")) System.out.println("Set contains cat");
-
-        /// set2 contains some common elements with set1, and some new
-        Set<String> set2 = new TreeSet<>();
-
-        set2.add("dog");
-        set2.add("cat");
-        set2.add("giraffe");
-        set2.add("monkey");
-        set2.add("ant");
-
-        Set<String> intersection = new HashSet<>(set1);
-        intersection.retainAll(set2); //keep similarities between set 1 and set 2
-
-        System.out.println(intersection);
-
-        for (String sameAnimal : intersection) System.out.println(sameAnimal);
-
-        Set<String> difference = new HashSet<>(set2);
-
-        difference.removeAll(set1); //removes differences between set1 and set2, prints what is left of set2
-
-        for (String diffAnimal : difference) System.out.println(diffAnimal);
     }
 
 }
